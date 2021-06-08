@@ -39,20 +39,20 @@ let store =  {
     
     
     },
-    _callSubscriber() {
+    _callSubscribe() {
         console.log('State was changed')
     },
     getState() {
         return this._state
     },
-    subscriber(observer) {
-        this._callSubscriber = observer;
+    subscribe(observer) {
+        this._callSubscribe = observer;
     },
     dispatch(action) {
         this._state.profilePage = profileReducer(this._state.profilePage, action);
         this._state.dialogsPage = dialogReducer(this._state.dialogsPage, action);
         this._state.sideBarPage = sideBarReducer(this._state.sideBarPage, action);
-        this._callSubscriber(this._state); 
+        this._callSubscribe(this._state);
     }
     
 }

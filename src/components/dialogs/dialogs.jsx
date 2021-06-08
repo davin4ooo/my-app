@@ -3,13 +3,18 @@ import React from 'react';
 import s from './dialogs.module.css';
 import DialogItem from './dialogsItem/dialogsItem'
 import MassageItem from './massageItem/massgaItem'
-import MyMassage from './my-massage/my-massage';
 
 const Dialogs = (props) => {
-    
-    let dialogsElements = props.dialogsPage.dialogsData.map(dialog => <DialogItem id={dialog.id} name={dialog.name}/>);
-    let massagesElements = props.dialogsPage.massagesData.map(massage => <MassageItem id={massage.id} massage={massage.massage}/>)
-   
+    let state = props.dialogsPage;
+    let dialogsElements = state.dialogsData.map(dialog => <DialogItem id={dialog.id} name={dialog.name}/>);
+    let massagesElements = state.massagesData.map(massage => <MassageItem id={massage.id} massage={massage.massage}/>)
+    let addMassage = () => {
+        props.sendMassage();
+    }
+    let onMassageChange = (e) => {
+        let text = e.target.value;
+        props.updateNewMassageTextActionCreator(text);
+    }
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
@@ -18,7 +23,10 @@ const Dialogs = (props) => {
             <div className={s.massages}>
                 {massagesElements}
             </div>
-            <MyMassage newMassageText={props.dialogsPage.newMassageText} dispatch={props.dispatch}/>
+            <div className='myMassage'>
+                <textarea onChange={onMassageChange}  value={state.newMassageText} />
+                <button onClick={addMassage}>Sand</button>
+            </div>
         </div>
     )
 }
