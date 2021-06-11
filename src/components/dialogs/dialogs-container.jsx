@@ -2,17 +2,23 @@
 import React from 'react';
 import {addMassageActionCreator, updateNewMassageTextActionCreator} from "../../redux/dialog-reducer";
 import Dialogs from "./dialogs";
+import StoreContext from "../../store-context";
 
-const DialogsContainer = (props) => {
-    let addMassage = () => {
-        props.store.dispatch(addMassageActionCreator());
-    }
-    let onMassageChange = (body) => {
-        props.store.dispatch(updateNewMassageTextActionCreator(body));
-    }
+const DialogsContainer = () => {
     return (
-        <Dialogs updateNewMassageTextActionCreator={onMassageChange}
-                 sendMassage={addMassage} dialogsPage={props.store.getState().dialogsPage}/>
+        <StoreContext.Consumer>
+            { (store) => {
+                let addMassage = () => {
+                store.dispatch(addMassageActionCreator());
+            }
+                let onMassageChange = (body) => {
+                store.dispatch(updateNewMassageTextActionCreator(body));
+            }
+                return <Dialogs updateNewMassageTextActionCreator={onMassageChange}
+                         sendMassage={addMassage} dialogsPage={store.getState().dialogsPage}/>}
+            }
+
+        </StoreContext.Consumer>
     )
 }
 

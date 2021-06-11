@@ -15,9 +15,9 @@ const App = (props) => {
           <NavBar friends={props.store.getState().sideBar.friends} />
           <div className={s.appWrapperContent}>
             <Route path='/profile'
-                   render={() => <Profile store={props.store}   />}/>
+                   render={() => <Profile   />}/>
             <Route path='/dialogs'
-                   render={() => <DialogsContainer store={props.store} />}/>
+                   render={() => <DialogsContainer  />}/>
           </div>
         </div>
       </div>
