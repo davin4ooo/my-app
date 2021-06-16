@@ -7,12 +7,12 @@ import s from './app.module.css'
 import DialogsContainer from "../dialogs/dialogs-container";
 
 
-const App = (props) => {
+const App = () => {
   return (
       <div>
         <div className={s.appWrapper}>
           <Header/>
-          <NavBar friends={props.store.getState().sideBar.friends} />
+          <NavBar  />
           <div className={s.appWrapperContent}>
             <Route path='/profile'
                    render={() => <Profile   />}/>

@@ -2,7 +2,7 @@ import React from 'react';
 import Post from '../post/post';
 
 const MyPosts = (props) => {
-    let postItem = props.posts.map(post => <Post id={post.id} massage={post.post}/>);
+    let postItem = props.profilePage.postsData.map(post => <Post id={post.id} massage={post.post}/>);
     let newPostElement = React.createRef();
     let addPost = () => {
         props.addPost();
@@ -18,7 +18,7 @@ const MyPosts = (props) => {
                {postItem}
            </div>
            <div>
-               <textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText} />
+               <textarea onChange={onPostChange} ref={newPostElement} value={props.profilePage.newPostText} />
                <button onClick={addPost}>Add post</button>
            </div>
         </div>

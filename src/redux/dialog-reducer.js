@@ -17,19 +17,23 @@ let initialState = {
     newMassageText: 'Hi',
 }
 
-const dialogReducer = (state=initialState, action) => {
-    switch(action.type) {
-        case ADD_MASSAGE:
-            let newMassage = {
-                id: 4,
-                massage: state.newMassageText,
-            };
-            state.massagesData.push(newMassage);
-            state.newMassageText = '';
-            return state;
-        case UPDATE_NEW_MASSAGE_TEXT :
-            state.newMassageText = action.newText;
-            return state;
+const dialogReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case ADD_MASSAGE: {
+            let body = state.newMassageText;
+            return {
+                ...state,
+                massagesData: [...state.massagesData, {id: 4, massage:body} ],
+                newMassageText: ''
+            }
+        }
+
+        case UPDATE_NEW_MASSAGE_TEXT : {
+            return {
+                ...state,
+                newMassageText: action.newText
+            }
+        }
         default:
             return state;
     }

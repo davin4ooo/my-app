@@ -5,15 +5,14 @@ import DialogItem from './dialogsItem/dialogsItem'
 import MassageItem from './massageItem/massgaItem'
 
 const Dialogs = (props) => {
-    let state = props.dialogsPage;
-    let dialogsElements = state.dialogsData.map(dialog => <DialogItem id={dialog.id} name={dialog.name}/>);
-    let massagesElements = state.massagesData.map(massage => <MassageItem id={massage.id} massage={massage.massage}/>)
+    let dialogsElements = props.dialogsPage.dialogsData.map(dialog => <DialogItem id={dialog.id} name={dialog.name}/>);
+    let massagesElements = props.dialogsPage.massagesData.map(massage => <MassageItem id={massage.id} massage={massage.massage}/>)
     let addMassage = () => {
-        props.sendMassage();
+        props.addMassage();
     }
     let onMassageChange = (e) => {
         let text = e.target.value;
-        props.updateNewMassageTextActionCreator(text);
+        props.onMassageChange(text);
     }
     return (
         <div className={s.dialogs}>
@@ -24,7 +23,7 @@ const Dialogs = (props) => {
                 {massagesElements}
             </div>
             <div className='myMassage'>
-                <textarea onChange={onMassageChange}  value={state.newMassageText} />
+                <textarea onChange={onMassageChange}  value={props.dialogsPage.newMassageText} />
                 <button onClick={addMassage}>Sand</button>
             </div>
         </div>

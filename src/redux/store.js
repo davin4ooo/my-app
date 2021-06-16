@@ -10,9 +10,9 @@ let store =  {
                 {id: 2, post: 'Lol'}
             ],
             newPostText: 'it-samurai',
-            
+
         },
-    
+
         dialogsPage: {
             dialogsData: [
                 {id: 1, name: 'Post' },
@@ -27,8 +27,8 @@ let store =  {
                 {id: 3, massage: 'wts' },
             ],
             newMassageText: 'Hi',
-        }, 
-        
+        },
+
         sideBar: {
             friends: [
                 {id: 1, name: 'Post'},
@@ -36,8 +36,8 @@ let store =  {
                 {id: 3, name: 'Chaika' },
             ]
         },
-    
-    
+
+
     },
     _callSubscribe() {
         console.log('State was changed')
@@ -54,7 +54,7 @@ let store =  {
         this._state.sideBarPage = sideBarReducer(this._state.sideBarPage, action);
         this._callSubscribe(this._state);
     }
-    
+
 }
 export default store;
 window.store = store;
