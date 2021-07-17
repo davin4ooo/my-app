@@ -1,0 +1,19 @@
+.container {
+
+}
+.containerAva {
+    padding-right: 10px;
+}
+.ava {
+    border-radius: 50%;
+}
+.button {
+
+}
+.infoUser {
+    border-radius: 20px;
+}
+.infoItem {
+    display: flex;
+    justify-content: space-around;
+}
